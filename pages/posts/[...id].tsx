@@ -1,3 +1,4 @@
+import { getAllPostIds } from '../../lib/posts'
 
 export default function Post(postData) {
   return (
@@ -13,14 +14,15 @@ export default function Post(postData) {
 export async function getStaticPaths() {
   // Return a list of possible value for id => 利用可能なidを返す
   // getStaticPaths() は返す形式が決まっている
-  const paths = [
-    {
-      params: {
-        id: ['2018','03', 'books_kaizen']
-      }
-    },
-  ]
+  // const paths = [
+  //   {
+  //     params: {
+  //       id: ['2018','03', 'books_kaizen']
+  //     }
+  //   },
+  // ]
 
+  const paths = getAllPostIds()
   return {
     paths, fallback: false
   }
