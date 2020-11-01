@@ -3,7 +3,9 @@ export default function Post(postData) {
   return (
     <>
       複数
-      {postData.id}
+      {postData.id[0]}
+      {postData.id[1]}
+      {postData.id[2]}
     </>
   )
 }
@@ -14,7 +16,7 @@ export async function getStaticPaths() {
   const paths = [
     {
       params: {
-        id: ['2018','03']
+        id: ['2018','03', 'books_kaizen']
       }
     },
   ]
