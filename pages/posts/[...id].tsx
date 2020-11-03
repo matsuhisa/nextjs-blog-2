@@ -1,12 +1,11 @@
-import { getAllPostIds } from '../../lib/posts'
+import { getAllPostIds, getPostData } from '../../lib/posts'
 
 export default function Post(postData) {
   return (
     <>
-      複数
-      {postData.id[0]}
-      {postData.id[1]}
-      {postData.id[2]}
+      {postData.title}
+      {postData.description}
+      <div className="foo" dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
     </>
   )
 }
@@ -31,10 +30,12 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   // Fetch necessary data for the blog post using params.id
   // params.id を利用して blog のデーターを取得する
-  console.table(params)
+  // console.table(params.id)
+
+  const postData = await getPostData(params.id)
   return {
     props: {
-      ...params
+      ...postData
     }
   }
 }

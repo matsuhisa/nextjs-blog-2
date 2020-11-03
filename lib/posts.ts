@@ -1,8 +1,27 @@
 import fs from 'fs'
 import path from 'path'
-// import matter from 'gray-matter'
+import matter from 'gray-matter'
+import remark from 'remark'
+import html from 'remark-html'
 
 const postsDirectory = path.join(process.cwd(), 'posts')
+
+export async function getPostData(id) {
+  const fullPath = path.join(postsDirectory, `${id.join('/')}.md`)
+  const fileContents = fs.readFileSync(fullPath, 'utf8')
+  const matterResult = matter(fileContents)
+
+  const processedContent = await remark()
+    .use(html)
+    .process(matterResult.content)
+  const contentHtml = processedContent.toString()
+
+  return {
+    id,
+    contentHtml,
+    ...matterResult.data
+  }
+}
 
 export function getAllPostIds() {
   const fileNames = (dir, files = []) => {
@@ -18,6 +37,12 @@ export function getAllPostIds() {
     return files;
   };
 
+  // getStaticPaths のために決まった形にしている
+  // {
+  //   params: {
+  //     id: ['2018','03', 'books_kaizen']
+  //   }
+  // },
   return fileNames(postsDirectory).map( fileName => {
     return {
       params: {
