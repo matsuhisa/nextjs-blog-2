@@ -3,6 +3,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import remark from 'remark'
 import html from 'remark-html'
+import gfm from 'remark-gfm'
 
 const postsDirectory = path.join(process.cwd(), 'posts')
 
@@ -12,6 +13,7 @@ export async function getPostData(id) {
   const matterResult = matter(fileContents)
 
   const processedContent = await remark()
+    .use(gfm)
     .use(html)
     .process(matterResult.content)
   const contentHtml = processedContent.toString()
@@ -43,7 +45,7 @@ export function getAllPostIds() {
   //     id: ['2018','03', 'books_kaizen']
   //   }
   // },
-  return fileNames(postsDirectory).map( fileName => {
+  return fileNames(postsDirectory).map(fileName => {
     return {
       params: {
         id: fileName.replace(/\.md$/, '').split('/')
