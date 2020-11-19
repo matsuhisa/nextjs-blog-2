@@ -2982,6 +2982,12 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
+markdown-table@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/markdown-table/-/markdown-table-2.0.0.tgz#194a90ced26d31fe753d8b9434430214c011865b"
+  dependencies:
+    repeat-string "^1.0.0"
+
 md5.js@^1.3.4:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/md5.js/-/md5.js-1.3.5.tgz#b5d07b8e3216e3e27cd728d72f70d1e6a342005f"
@@ -3004,6 +3010,38 @@ mdast-util-from-markdown@^0.8.0:
     mdast-util-to-string "^1.0.0"
     micromark "~2.10.0"
     parse-entities "^2.0.0"
+
+mdast-util-gfm-autolink-literal@^0.1.0:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/mdast-util-gfm-autolink-literal/-/mdast-util-gfm-autolink-literal-0.1.1.tgz#94675074d725ed7254b3172fa7e7c3252960de39"
+
+mdast-util-gfm-strikethrough@^0.2.0:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/mdast-util-gfm-strikethrough/-/mdast-util-gfm-strikethrough-0.2.2.tgz#6e9ddd33ce41b06a60463e817f6ef4cf7bfa0655"
+  dependencies:
+    mdast-util-to-markdown "^0.5.0"
+
+mdast-util-gfm-table@^0.1.0:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/mdast-util-gfm-table/-/mdast-util-gfm-table-0.1.4.tgz#5b3d71d16294c6fae1c2c424d3a081ffc7407b83"
+  dependencies:
+    markdown-table "^2.0.0"
+    mdast-util-to-markdown "^0.5.0"
+
+mdast-util-gfm-task-list-item@^0.1.0:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/mdast-util-gfm-task-list-item/-/mdast-util-gfm-task-list-item-0.1.5.tgz#3179e77f1c881370818302e7b93537d7c281401d"
+  dependencies:
+    mdast-util-to-markdown "^0.5.0"
+
+mdast-util-gfm@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/mdast-util-gfm/-/mdast-util-gfm-0.1.0.tgz#bac0efe703670d1b40474e6be13dbdd887273a04"
+  dependencies:
+    mdast-util-gfm-autolink-literal "^0.1.0"
+    mdast-util-gfm-strikethrough "^0.2.0"
+    mdast-util-gfm-table "^0.1.0"
+    mdast-util-gfm-task-list-item "^0.1.0"
 
 mdast-util-to-hast@^10.0.0:
   version "10.0.0"
@@ -3054,6 +3092,45 @@ memory-fs@^0.5.0:
 merge-stream@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/merge-stream/-/merge-stream-2.0.0.tgz#52823629a14dd00c9770fb6ad47dc6310f2c1f60"
+
+micromark-extension-gfm-autolink-literal@~0.5.0:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/micromark-extension-gfm-autolink-literal/-/micromark-extension-gfm-autolink-literal-0.5.1.tgz#5326fc86f3ae0fbba57bb0bfc2f158c9456528ce"
+  dependencies:
+    micromark "~2.10.0"
+
+micromark-extension-gfm-strikethrough@~0.6.0:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/micromark-extension-gfm-strikethrough/-/micromark-extension-gfm-strikethrough-0.6.2.tgz#754788bdd13046e7f69edaa0d3f3d555d23128d6"
+  dependencies:
+    micromark "~2.10.0"
+
+micromark-extension-gfm-table@~0.4.0:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/micromark-extension-gfm-table/-/micromark-extension-gfm-table-0.4.1.tgz#79cc37da82d6ae0cc3901c1c6264b97a72372fbd"
+  dependencies:
+    micromark "~2.10.0"
+
+micromark-extension-gfm-tagfilter@~0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/micromark-extension-gfm-tagfilter/-/micromark-extension-gfm-tagfilter-0.3.0.tgz#d9f26a65adee984c9ccdd7e182220493562841ad"
+
+micromark-extension-gfm-task-list-item@~0.3.0:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/micromark-extension-gfm-task-list-item/-/micromark-extension-gfm-task-list-item-0.3.2.tgz#74dbcf473276e762d2062baa0764b53c19205797"
+  dependencies:
+    micromark "~2.10.0"
+
+micromark-extension-gfm@^0.3.0:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/micromark-extension-gfm/-/micromark-extension-gfm-0.3.1.tgz#30b8706bd2a3f7fd31aa37873d743946a9e856c3"
+  dependencies:
+    micromark "~2.10.0"
+    micromark-extension-gfm-autolink-literal "~0.5.0"
+    micromark-extension-gfm-strikethrough "~0.6.0"
+    micromark-extension-gfm-table "~0.4.0"
+    micromark-extension-gfm-tagfilter "~0.3.0"
+    micromark-extension-gfm-task-list-item "~0.3.0"
 
 micromark@~2.10.0:
   version "2.10.1"
@@ -3826,6 +3903,13 @@ regjsparser@^0.6.4:
   resolved "https://registry.yarnpkg.com/regjsparser/-/regjsparser-0.6.4.tgz#a769f8684308401a66e9b529d2436ff4d0666272"
   dependencies:
     jsesc "~0.5.0"
+
+remark-gfm@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/remark-gfm/-/remark-gfm-1.0.0.tgz#9213643001be3f277da6256464d56fd28c3b3c0d"
+  dependencies:
+    mdast-util-gfm "^0.1.0"
+    micromark-extension-gfm "^0.3.0"
 
 remark-html@^13.0.1:
   version "13.0.1"
