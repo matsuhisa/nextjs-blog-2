@@ -15,6 +15,20 @@
 
 ---
 
+~~~css
+h1 {
+  color: red;
+}
+~~~
+
+```css
+.bar {
+  background: #ffffff;
+}
+```
+
+---
+
 https//www.yahoo.co.jp/
 
 ---
