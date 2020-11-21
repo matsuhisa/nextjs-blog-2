@@ -15,6 +15,10 @@
 
 ---
 
+https//www.yahoo.co.jp/
+
+---
+
 - [Qiita](http://qiita.com)
 - [Qiita](http://qiita.com "Qiita")
 
