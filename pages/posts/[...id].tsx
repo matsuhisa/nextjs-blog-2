@@ -1,9 +1,15 @@
 import { getAllPostIds, getPostData } from '../../lib/posts'
+import Head from 'next/head'
 
 export default function Post(postData) {
   return (
     <>
-      {postData.title}
+      <Head>
+        <title>{postData.title}</title>
+        <meta property='og:title' content={postData.title} key='title' />
+      </Head>
+      <h1>{postData.title}</h1>
+
       {postData.description}
       <div className="foo" dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
     </>
