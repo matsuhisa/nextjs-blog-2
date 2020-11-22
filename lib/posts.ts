@@ -25,6 +25,27 @@ export async function getPostData(id) {
   }
 }
 
+export function getAllYearMonths() {
+  const postDirectories = (directory) => {
+    const directories = []
+    const readDirectories = fs.readdirSync(postsDirectory, { withFileTypes: true })
+
+    readDirectories.forEach(result => {
+      if (result.isDirectory()) {
+        const secondDirectories = fs.readdirSync(`${directory}/${result.name}`, { withFileTypes: true })
+        secondDirectories.forEach(result2 => {
+          if (result2.isDirectory()) {
+            directories.push({ params: { year: result.name, month: result2.name } })
+          }
+        })
+      }
+    })
+    return directories
+  }
+
+  return postDirectories(postsDirectory)
+}
+
 export function getAllPostIds() {
   const fileNames = (dir, files = []) => {
     const dirents = fs.readdirSync(dir, { withFileTypes: true });
