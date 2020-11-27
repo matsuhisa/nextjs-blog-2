@@ -1,6 +1,7 @@
 import { getYearMonthPostData, getAllYearMonths } from '../../../lib/posts'
 import Head from 'next/head'
 import Link from 'next/link'
+import Entry from '../../../components/entry'
 
 export default function Post(postData) {
   // console.table(postData.posts)
@@ -13,9 +14,7 @@ export default function Post(postData) {
 
       <h1>{postData.year}年{postData.month}月</h1>
       {postData.posts.map((entry, i) => (
-        <Link href={`/posts/${entry.id.join('/')}`}>
-          <a>{entry.title}</a>
-        </Link>
+        <Entry entry={entry} />
       ))}
     </>
   )
