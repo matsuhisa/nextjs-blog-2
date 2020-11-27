@@ -74,3 +74,31 @@ export function getAllPostIds() {
     }
   })
 }
+
+export async function getYearMonthPostData(year: number, month: number) {
+  const postFiles = fs.readdirSync(`${postsDirectory}/${year}/${month}`, { withFileTypes: true })
+  const posts = []
+
+  postFiles.forEach(post => {
+    if (post.isFile()) {
+      const fullPath = path.join(postsDirectory, `/${year}/${month}/${post.name}`)
+      const fileContents = fs.readFileSync(fullPath, 'utf8')
+      const matterResult = matter(fileContents)
+
+      posts.push({
+        id: [year, month, post.name.replace('.md', '')],
+        date: matterResult.data['date'],
+        title: matterResult.data['title'],
+        description: matterResult.data['description'],
+      })
+    }
+  })
+
+  return posts.sort((a, b) => {
+    if (a.date < b.date) {
+      return 1
+    } else {
+      return -1
+    }
+  })
+}

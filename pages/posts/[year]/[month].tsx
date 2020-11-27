@@ -1,14 +1,22 @@
-import { getAllYearMonths } from '../../../lib/posts'
+import { getYearMonthPostData, getAllYearMonths } from '../../../lib/posts'
 import Head from 'next/head'
+import Link from 'next/link'
 
 export default function Post(postData) {
+  // console.table(postData.posts)
   return (
     <>
       <Head>
         <title>{postData.year}年{postData.month}月</title>
         <meta property='og:title' content='' key='title' />
       </Head>
-      {postData.year}年{postData.month}月
+
+      <h1>{postData.year}年{postData.month}月</h1>
+      {postData.posts.map((entry, i) => (
+        <Link href={`/posts/${entry.id.join('/')}`}>
+          <a>{entry.title}</a>
+        </Link>
+      ))}
     </>
   )
 }
@@ -39,11 +47,12 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  // Fetch necessary data for the blog post using params.id
-  // params.id を利用して blog のデーターを取得する
+  console.table(params)
+  const posts = await getYearMonthPostData(Number(params.year), Number(params.month))
 
   return {
     props: {
+      posts,
       ...params
     }
   }

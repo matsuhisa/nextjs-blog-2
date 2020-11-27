@@ -7,10 +7,9 @@ export default function Post(postData) {
       <Head>
         <title>{postData.title}</title>
         <meta property='og:title' content={postData.title} key='title' />
+        <meta property='og:description' content={postData.description} key='description' />
       </Head>
       <h1>{postData.title}</h1>
-
-      {postData.description}
       <div className="foo" dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
     </>
   )
@@ -36,7 +35,6 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   // Fetch necessary data for the blog post using params.id
   // params.id を利用して blog のデーターを取得する
-  // console.table(params.id)
 
   const postData = await getPostData(params.id)
   return {
