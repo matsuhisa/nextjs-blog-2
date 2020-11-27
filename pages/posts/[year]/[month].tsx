@@ -14,7 +14,7 @@ export default function Post(postData) {
 
       <h1>{postData.year}年{postData.month}月</h1>
       {postData.posts.map((entry, i) => (
-        <Entry entry={entry} />
+        <Entry entry={entry} key={i} />
       ))}
     </>
   )
