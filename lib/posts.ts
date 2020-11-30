@@ -75,7 +75,8 @@ export function getAllPostIds() {
   })
 }
 
-export async function getYearMonthPostData(year: number, month: number) {
+export async function getYearMonthPostData(year: string, month: string) {
+  console.log(`${postsDirectory}/${year}/${month}`)
   const postFiles = fs.readdirSync(`${postsDirectory}/${year}/${month}`, { withFileTypes: true })
   const posts = []
 

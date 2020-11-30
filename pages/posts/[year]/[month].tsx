@@ -46,8 +46,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  console.table(params)
-  const posts = await getYearMonthPostData(Number(params.year), Number(params.month))
+  // console.table(params)
+  const posts = await getYearMonthPostData(params.year, params.month)
 
   return {
     props: {
